@@ -2,13 +2,13 @@ package calculadora;
 
 import java.util.Scanner;
 
-public class main{
+public class calc{
 
     public void soma(Scanner sc){
-        long soma = 0, num = 1;   
+        float soma = 0, num = 1;   
         System.out.println("Digite os valores. 0 para sair.");
         while(sc.hasNext()){
-            num = sc.nextLong();
+            num = sc.nextFloat();
             sc.nextLine();
             if(num == 0) break;
             soma += num;
@@ -17,12 +17,12 @@ public class main{
     }
 
     public void subtracao(Scanner sc){
-        long sub = 0, num = 1;
+        float sub = 0, num = 1;
         System.out.println("Digite os valores. 0 para sair");
-        sub = sc.nextLong();
+        sub = sc.nextFloat();
         sc.nextLine();
         while(sc.hasNext()){
-            num = sc.nextLong();
+            num = sc.nextFloat();
             sc.nextLine();
             if(num == 0) break;
             sub -= num;
@@ -31,11 +31,11 @@ public class main{
     }
 
     public void multiplicacao(Scanner sc){
-        long mult = 1, num = 1;
+        float mult = 1, num = 1;
         System.out.println("Digite os valores. 0 para sair");
         while(sc.hasNext()){
             mult = mult * num;
-            num = sc.nextLong();
+            num = sc.nextFloat();
             sc.nextLine();
             if(num == 0) break;
         }
@@ -59,7 +59,7 @@ public class main{
     public static void main(String[] args){
         String op = "";
         Scanner sc = new Scanner(System.in);
-        main calculadora = new main();
+        calc calculadora = new calc();
             while(!op.equals("0")){
                 System.out.println("Digite a operação: ");
                 System.out.println("SOMA: + | SUBTRACAO: - | MULTIPLICACAO: * | DIVISAO: / | SAIR: 0");
