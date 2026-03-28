@@ -1,4 +1,4 @@
-package calculadora;
+//package calculadora;
 
 import java.util.Scanner;
 
@@ -68,20 +68,17 @@ public class calc{
                     case "+":
                         calculadora.soma(sc);
                         break;
-                    
                     case "-":
                         calculadora.subtracao(sc);
                         break;
-
                     case "*":
                         calculadora.multiplicacao(sc);
                         break;
-                
                     case "/":
                         calculadora.divisao(sc);
                         break;
-
                     case "0":
+                        System.out.println("Saindo...");
                         break;
                     default:
                         System.out.println("Operacao invalida. Tente novamente.\n");
