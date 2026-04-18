@@ -7,11 +7,10 @@ import java.io.FileWriter;
 import java.util.Scanner;
 
 public class ClienteController {
-    public static void criar(){
+    public static void criar(Scanner sc){
         System.out.println("Chamando criar");
 
         
-        Scanner sc = new Scanner(System.in);
         System.out.println("Digite o nome, email e idade");
         String nome = sc.nextLine(); //recebe nome
         String email = sc.nextLine(); //recebe email
@@ -25,8 +24,6 @@ public class ClienteController {
         } catch (Exception e) {
             System.out.println("Erro ao criar cliente");
         }
-        sc.next();
-        sc.close();
     }
 
     public static void listar(){
@@ -43,9 +40,8 @@ public class ClienteController {
         return;
     }
 
-    public static void buscar(){
+    public static void buscar(Scanner sc){
         System.out.println("Chamando buscar");
-        Scanner sc = new Scanner(System.in);
         System.out.println("Digite o nome completo do cliente");
         String nome = sc.nextLine(); //recebe nome
         try(BufferedReader leitor = new BufferedReader(new FileReader("crud/clientes.csv"))){
@@ -60,14 +56,10 @@ public class ClienteController {
         } catch (Exception e) {
             System.out.println("Erro ao listar clientes");
         }
-        sc.nextLine();
-        System.out.println("passou sc");
-        sc.close();
     }
 
-    public static void editar(){
+    public static void editar(Scanner sc){
         System.out.println("Chamando editar");
-        Scanner sc = new Scanner(System.in);
         String nome;
         System.out.println("Digite o nome completo do cliente");
         nome = sc.nextLine();
@@ -82,8 +74,10 @@ public class ClienteController {
                     int idadeN = sc.nextInt();
                     sc.nextLine();
                     escritor.write(nomeN + ";" + emailN + ";" + idadeN);
+                    escritor.newLine();
                 } else{
                     escritor.write(linha);
+                    escritor.newLine();
                 }
             }
         } catch (Exception e) {
@@ -99,13 +93,10 @@ public class ClienteController {
         } catch (Exception e) {
             System.out.println("Erro ao reescrever clientes.csv");
         }
-        sc.nextLine();
-        sc.close();
     }
 
-    public static void excluir(){
+    public static void excluir(Scanner sc){
         System.out.println("Chamando excluir");
-        Scanner sc = new Scanner(System.in);
         String nome;
         System.out.println("Digite o nome completo do cliente");
         nome = sc.nextLine();
@@ -113,10 +104,9 @@ public class ClienteController {
             BufferedWriter escritor = new BufferedWriter(new FileWriter("/tmp/temp.csv"))){
             String linha;
             while((linha = leitor.readLine()) != null){
-                if (linha.split(";")[0].equals(nome)){
-                    leitor.readLine();
-                } else{
+                if (!linha.split(";")[0].equals(nome)){
                     escritor.write(linha);
+                    escritor.newLine();
                 }
             }
         } catch (Exception e) {
@@ -132,8 +122,6 @@ public class ClienteController {
         } catch (Exception e) {
             System.out.println("Erro ao reescrever clientes.csv");
         }
-        sc.nextLine();
-        sc.close();
     }
 
 }
