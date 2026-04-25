@@ -36,6 +36,7 @@ article{
 
 main select{
     color:whitesmoke;
+    background-color: green;
     background-color: transparent;
     border: 2px solid white;
     padding: 5px 10px;
